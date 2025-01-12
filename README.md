@@ -36,7 +36,6 @@ La página está hecha con **Bootstrap**, lo que significa que se ve bien en cua
     ```bash
     python -m venv env
     source env/bin/activate  # En Windows: env\Scripts\activate
-    pip install -r requirements.txt
     ```
 
 4. Aplica las migraciones para crear las tablas en la base de datos:

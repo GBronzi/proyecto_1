@@ -23,4 +23,32 @@ La página está hecha con **Bootstrap**, lo que significa que se ve bien en cua
    Si aún no tienes el proyecto en tu computadora, abre una terminal y escribe:
 
    ```bash
-   git clone https://github.com/tu-usuario/appcoder.git
+   git clone direccion 
+
+   2. Navega al directorio del proyecto:
+
+    ```bash
+    cd appcoder
+    ```
+
+3. Crea un entorno virtual e instala las dependencias necesarias:
+
+    ```bash
+    python -m venv env
+    source env/bin/activate  # En Windows: env\Scripts\activate
+    pip install -r requirements.txt
+    ```
+
+4. Aplica las migraciones para crear las tablas en la base de datos:
+
+    ```bash
+    python manage.py migrate
+    ```
+
+5. Corre el servidor de desarrollo:
+
+    ```bash
+    python manage.py runserver
+    ```
+
+6. Abre tu navegador y visita `http://127.0.0.1:8000/

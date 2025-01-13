@@ -29,14 +29,16 @@ La página principal de la aplicación (index.html) incluye las siguientes secci
 
 2. Navega al directorio del proyecto:
    ```bash
-   cd appcoder
+   cd MiProyecto
    ```
 
 3. Instala las dependencias necesarias:
    ```bash
    pip install -r requirements.txt
    ```
-   
+   Django          5.1.4
+   virtualenv      20.28.0
+
 5. Aplica las migraciones de la base de datos:
    ```bash
    python manage.py migrate

@@ -64,7 +64,7 @@ A continuación, algunas capturas de pantalla de la interfaz de la aplicación:
 ![Página principal](https://raw.githubusercontent.com/GBronzi/proyecto_1/refs/heads/master/AppCoder/static/img/pag_1.png)
 
 ### Gestión de Socios
-![Gestión de Socios](https://raw.githubusercontent.com/GBronzi/proyecto_1/refs/heads/master/AppCoder/static/img/pag_2.png))
+![Gestión de Socios](https://raw.githubusercontent.com/GBronzi/proyecto_1/refs/heads/master/AppCoder/static/img/pag_2.png)
 
 ### Gestión de Instructores
 ![Gestiond de Instructores](https://raw.githubusercontent.com/GBronzi/proyecto_1/refs/heads/master/AppCoder/static/img/pag_3.png)

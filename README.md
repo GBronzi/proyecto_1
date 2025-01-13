@@ -10,6 +10,7 @@ La página principal de la aplicación (index.html) incluye las siguientes secci
 - **Hero Section**: Mensaje de bienvenida que invita al usuario a seleccionar una opción del menú para gestionar socios o instructores.
 - **Gestión de Socios**: Sección que permite agregar nuevos socios o consultar la lista de socios existentes.
 - **Gestión de Instructores**: Sección similar a la de socios, pero para los instructores del gimnasio.
+- **Gestion de Actividades**: Sección donde pueden cargar las actividades realizadas por los socios
 - **Buscador**: Sección para buscar socios o instructores por nombre, apellido o correo electrónico.
 
 ## Características
@@ -18,6 +19,8 @@ La página principal de la aplicación (index.html) incluye las siguientes secci
 - **Ver Lista de Socios**: Muestra todos los socios registrados en la plataforma.
 - **Agregar Instructores**: Permite agregar nuevos instructores para el gimnasio.
 - **Ver Lista de Instructores**: Permite visualizar todos los instructores registrados.
+- **Carga de Actividades**: Permite agregar nuevas actividades para los socios.
+- **Ver lista de actividades**: Permite visualizar las actividades del socio con su respectivo instructor. adicional puede editar o eliminar actividad
 - **Buscador**: Los usuarios pueden buscar socios e instructores por nombre, apellido o email.
 
 ## Instalación

@@ -3,39 +3,37 @@
 
 <title>
     {% block titulo %}
-        Lista Profesores
+        Lista Instructores
     {% endblock %}
 </title>
 
 {% block cuerpo %}
     <div class="container my-4">
-        <h3 class="mb-4">Lista de Profesores</h3>
+        <h3 class="mb-4">Lista de Instructores</h3>
         <table class="table table-striped table-hover">
             <thead class="table-dark">
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>Profesion</th>
+                    <th>Especialidad</th>
                     <th>Email</th>
-                    <th>Curso</th>
                 </tr>
             </thead>
             <tbody>
-                {% for profesor in profesores %}
+                {% for instructor in instructores %}
                 <tr>
-                    <td>{{ forloop.counter }}</td> <!-- Muestra el número de cada profesor -->
-                    <td>{{ profesor.nombre }}</td>
-                    <td>{{ profesor.apellido }}</td>
-                    <td>{{ profesor.profesion }}</td>
-                    <td>{{ profesor.email }}</td>
-                    <td>{{ profesor.curso }}</td>
+                    <td>{{ forloop.counter }}</td> <!-- Muestra el número de cada instructor -->
+                    <td>{{ instructor.nombre }}</td>
+                    <td>{{ instructor.apellido }}</td>
+                    <td>{{ instructor.get_especialidad_display }}</td> <!-- Muestra el valor legible de la especialidad -->
+                    <td>{{ instructor.email }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
         <div class="mt-4">
-            <a href="{% url 'cargar_profesor' %}" class="btn btn-success me-2">Agregar Profesor</a>
+            <a href="{% url 'cargar_instructor' %}" class="btn btn-success me-2">Agregar Instructor</a>
             <a href="{% url 'index' %}" class="btn btn-secondary">Inicio</a>
         </div>
     </div>

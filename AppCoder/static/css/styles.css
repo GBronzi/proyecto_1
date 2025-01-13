@@ -119,8 +119,20 @@
   --bs-form-invalid-border-color: #dc3545;
 }
 
+.nav-bar-barra {
+    background-color: #343a40;
+}
+
+.dropdown-menu-custom {
+    background-color: #ced4da;
+}
+
+.nav-bar-letras {
+    color: #d6d6d6;
+}
+
 .hero-section {
-    background: url("../img/img.png") no-repeat center center;
+    background: linear-gradient(rgba(255, 255, 255, 0.252), rgba(255, 255, 255, 0.252)), url("../img/img.png") no-repeat center center;
     background-size: cover;
     color: white;
     height: 80vh;
@@ -214,4 +226,11 @@
     .col-sm-10 {
         flex: 1 1 70%;  /* Aumenta el tamaño de los campos de entrada en pantallas pequeñas */
     }
+}
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x)* .0);
+    padding-left: calc(var(--bs-gutter-x)* .0); 
 }

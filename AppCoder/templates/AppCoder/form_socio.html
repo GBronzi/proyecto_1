@@ -3,34 +3,52 @@
 
 <title>
     {% block titulo %}
-        Cargar Estudiante
+        Cargar Socio
     {% endblock %}
 </title>
 {% block cuerpo %}
 <div class="container my-5">
     <div class="card shadow-lg">
         <div class="card-header bg-success text-white">
-            <h2 class="mb-0">Cargar Estudiante</h2>
+            <h2 class="mb-0">Cargar Socio</h2>
         </div>
         <div class="card-body">
             <form method="post">
                 {% csrf_token %}
                 <div class="mb-3 row">
-                    <label for="estudiante.nombre" class="col-sm-1 col-form-label">Nombre</label>
+                    <label for="socio.nombre" class="col-sm-1 col-form-label">Nombre</label>
                     <div class="col-sm-10">
                         {{ form.nombre }}
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="estudiante.apellido" class="col-sm-1 col-form-label">Apellido</label>
+                    <label for="socio.apellido" class="col-sm-1 col-form-label">Apellido</label>
                     <div class="col-sm-10">
                         {{ form.apellido }}
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="estudiante.email" class="col-sm-1 col-form-label">Email</label>
+                    <label for="socio.edad" class="col-sm-1 col-form-label">Edad</label>
+                    <div class="col-sm-10">
+                        {{ form.edad }}
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="socio.email" class="col-sm-1 col-form-label">Email</label>
                     <div class="col-sm-10">
                         {{ form.email }}
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="socio.telefono" class="col-sm-1 col-form-label">Telefono</label>
+                    <div class="col-sm-10">
+                        {{ form.telefono }}
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="socio.tipo_clase" class="col-sm-1 col-form-label">Tipo de Clase</label>
+                    <div class="col-sm-10">
+                        {{ form.tipo_clase }}
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">

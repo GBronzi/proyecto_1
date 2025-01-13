@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from .forms import EstudianteForm, ProfesorForm
-from .models import Estudiante, Profesor
+from .forms import SocioForm, InstructorForm
+from .models import Socio, Instructor
 from django.db.models import Q
-# =============================PAGINAS VISTA=====================
+
+# =============================Paginas=====================
 def index(request):
     return render(request, 'AppCoder/index.html')
 
@@ -12,73 +13,67 @@ def acerca(request):
 def contacto(request):
     return render(request, 'AppCoder/contacto.html')
 
-# =============================ESTUDIANTE=CARGA ESTUDIANTE================================================
-def cargar_estudiante(request):
+# =============================Cargar Socios================================================
+def cargar_socio(request):
     if request.method == 'POST':
-        form = EstudianteForm(request.POST)
+        form = SocioForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('lista_estudiantes')
-            # return redirect('index')
+            return redirect('lista_socios')
     else:
-        form = EstudianteForm()
-    return render(request, 'AppCoder/form_estudiante.html', {'form': form})
+        form = SocioForm()
+    return render(request, 'AppCoder/form_socio.html', {'form': form})
 
+# ==========================Lista Socios======================================================
+def lista_socios(request):
+    socios = Socio.objects.all()
+    return render(request, 'AppCoder/lista_socios.html', {'socios': socios})
 
-# ==========================LISTA===ESTUDIANTE=================================================
-
-def lista_estudiantes(request):
-    estudiantes = Estudiante.objects.all()
-    return render(request, 'AppCoder/lista_estudiantes.html', {'estudiantes': estudiantes})
-
-
-# =============================PROFESOR=================================================
-def cargar_profesor(request):
+# =============================Carga Instructores=============================================
+def cargar_instructor(request):
     if request.method == 'POST':
-        form = ProfesorForm(request.POST)
+        form = InstructorForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('lista_profesores')
+            return redirect('lista_instructores')
     else:
-        form = ProfesorForm()
-    return render(request, 'AppCoder/form_profesor.html', {'form': form})
+        form = InstructorForm()
+    return render(request, 'AppCoder/form_instructor.html', {'form': form})
 
-def lista_profesores(request):
-    profesores = Profesor.objects.all()
-    return render(request, 'AppCoder/lista_profesores.html', {'profesores': profesores})
+# =============================Lista Instructores=============================================
+def lista_instructores(request):
+    instructores = Instructor.objects.all()
+    return render(request, 'AppCoder/lista_instructores.html', {'instructores': instructores})
 
-
-
-# =============================BUSQUEDA=================================================
+# =============================BUSQUEDA=======================================================
 def buscar(request):
     query = request.GET.get('q', '')
     resultados = []
 
     if query:
-        estudiantes = Estudiante.objects.filter(
+        socios = Socio.objects.filter(
             Q(nombre__icontains=query) | Q(apellido__icontains=query) | Q(email__icontains=query)
         )
-        profesores = Profesor.objects.filter(
-            Q(nombre__icontains=query) | Q(apellido__icontains=query) | Q(email__icontains=query) | Q(profesion__icontains=query) | Q(curso__icontains=query)
+        instructores = Instructor.objects.filter(
+            Q(nombre__icontains=query) | Q(apellido__icontains=query) | Q(email__icontains=query) | Q(especialidad__icontains=query)
         )
 
-        for estudiante in estudiantes:
+        for socio in socios:
             resultados.append({
-                'tipo': 'Estudiante',
-                'nombre': estudiante.nombre,
-                'apellido': estudiante.apellido,
-                'email': estudiante.email,
+                'tipo': 'Socio',
+                'nombre': socio.nombre,
+                'apellido': socio.apellido,
+                'email': socio.email,
                 'extra': '-',
             })
 
-        for profesor in profesores:
+        for instructor in instructores:
             resultados.append({
-                'tipo': 'Profesor',
-                'nombre': profesor.nombre,
-                'apellido': profesor.apellido,
-                'email': profesor.email,
-                'profesion': f'{profesor.profesion}',
-                'curso': f'{profesor.curso}',
+                'tipo': 'Instructor',
+                'nombre': instructor.nombre,
+                'apellido': instructor.apellido,
+                'email': instructor.email,
+                'especialidad': f'{instructor.especialidad}',
             })
 
     return render(request, 'AppCoder/index.html', {'resultados': resultados})

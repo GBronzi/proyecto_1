@@ -1,13 +1,13 @@
 from django import forms
-from .models import Estudiante, Profesor
+from .models import Socio, Instructor
 
-class EstudianteForm(forms.ModelForm):
+class SocioForm(forms.ModelForm):
     class Meta:
-        model = Estudiante
-        fields = ['nombre', 'apellido', 'email']
+        model = Socio
+        fields = ['nombre', 'apellido', 'email', 'edad', 'telefono', 'tipo_clase']
         
-class ProfesorForm(forms.ModelForm):
+class InstructorForm(forms.ModelForm):
     class Meta:
-        model = Profesor
-        fields = ['nombre', 'apellido', 'email', 'profesion', 'curso']
+        model = Instructor
+        fields = ['nombre', 'apellido', 'email', 'especialidad']
         

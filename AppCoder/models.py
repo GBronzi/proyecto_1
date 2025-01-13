@@ -1,6 +1,5 @@
 from django.db import models
 
-# Modelo Socio (anteriormente Estudiante)
 class Socio(models.Model):
     # Opciones de tipos de clase
     tipos_clases = [
@@ -23,9 +22,8 @@ class Socio(models.Model):
     def __str__(self):
         return f"{self.nombre} {self.apellido} - {self.tipo_clase}"
 
-# Modelo Instructor
 class Instructor(models.Model):
-    # Opciones de especialidad
+    
     especialidades = [
         ('musculacion', 'Musculación'),
         ('spinning', 'Spinning'),

@@ -1,0 +1,26 @@
+{% extends "AppCoder/index.html" %}
+{% load static %}
+<title>
+    {% block titulo %}
+        Crear Actividad
+    {% endblock %}
+</title>
+{% block cuerpo %}
+
+<div class="container my-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-success text-white">
+            <h2 class="mb-0">Cargar Actividad</h2>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="d-flex justify-content-end"></div>
+                <button type="submit" class="btn btn-success">Guardar</button>
+                <a href="{% url 'index' %}" class="btn btn-secondary">Inicio</a>
+            </form>
+        </div>            
+    </div>
+</div>
+{% endblock %}

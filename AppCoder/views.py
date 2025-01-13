@@ -59,7 +59,7 @@ def buscar(request):
             Q(nombre__icontains=query) | Q(apellido__icontains=query) | Q(email__icontains=query)
         )
         profesores = Profesor.objects.filter(
-            Q(nombre__icontains=query) | Q(apellido__icontains=query) | Q(email__icontains=query) | Q(profesion__icontains=query)
+            Q(nombre__icontains=query) | Q(apellido__icontains=query) | Q(email__icontains=query) | Q(profesion__icontains=query) | Q(curso__icontains=query)
         )
 
         for estudiante in estudiantes:
@@ -77,7 +77,8 @@ def buscar(request):
                 'nombre': profesor.nombre,
                 'apellido': profesor.apellido,
                 'email': profesor.email,
-                'extra': f'{profesor.profesion}',
+                'profesion': f'{profesor.profesion}',
+                'curso': f'{profesor.curso}',
             })
 
     return render(request, 'AppCoder/index.html', {'resultados': resultados})

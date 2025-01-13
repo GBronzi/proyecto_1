@@ -1,53 +1,68 @@
-# proyecto_1
+# Proyecto AppCoder
 
-# AppCoder
+Este es un proyecto para gestionar socios e instructores en un gimnasio. Se construyó utilizando Django para el backend y HTML con Bootstrap para la interfaz de usuario. El sistema permite agregar, ver y buscar tanto socios como instructores.
 
-**AppCoder** es una aplicación web simple que permite gestionar **estudiantes** y **profesores**. Este proyecto fue hecho con **Python** y **Django** como una manera fácil de aprender y poner en práctica lo que se sabe sobre desarrollo web.
+## Descripción
 
-## ¿Qué hace AppCoder?
+La página principal de la aplicación (index.html) incluye las siguientes secciones:
 
-- **Gestión de Estudiantes**: Puedes agregar estudiantes nuevos, ver su lista y buscar por nombre, apellido o correo.
-- **Gestión de Profesores**: Igual que con los estudiantes, puedes agregar profesores y ver la lista.
-- **Búsqueda**: Si tienes muchos estudiantes o profesores, puedes buscar a alguien por su nombre o email.
-  
-La página está hecha con **Bootstrap**, lo que significa que se ve bien en cualquier dispositivo.
+- **Navbar**: Menú de navegación para acceder a las secciones de gestión de socios, instructores, acerca y contacto.
+- **Hero Section**: Mensaje de bienvenida que invita al usuario a seleccionar una opción del menú para gestionar socios o instructores.
+- **Gestión de Socios**: Sección que permite agregar nuevos socios o consultar la lista de socios existentes.
+- **Gestión de Instructores**: Sección similar a la de socios, pero para los instructores del gimnasio.
+- **Buscador**: Sección para buscar socios o instructores por nombre, apellido o correo electrónico.
 
-## ¿Qué necesitas para ejecutar el proyecto?
+## Características
 
-- **Python 3.x**: Asegúrate de tener la versión más reciente de Python.
-- **Django**: Si no lo tienes, puedes instalarlo fácilmente.
+- **Agregar Socios**: Permite a los administradores añadir nuevos socios a la base de datos.
+- **Ver Lista de Socios**: Muestra todos los socios registrados en la plataforma.
+- **Agregar Instructores**: Permite agregar nuevos instructores para el gimnasio.
+- **Ver Lista de Instructores**: Permite visualizar todos los instructores registrados.
+- **Buscador**: Los usuarios pueden buscar socios e instructores por nombre, apellido o email.
 
-## ¿Cómo instalar y ejecutar el proyecto?
+## Instalación
 
-1. **Clona el proyecto**:
-   Si aún no tienes el proyecto en tu computadora, abre una terminal y escribe:
-
+1. Clona el repositorio en tu máquina local:
    ```bash
-   git clone direccion 
+   git clone -->direccion repositorio en github.com<--
+   ```
 
-   2. Navega al directorio del proyecto:
+2. Navega al directorio del proyecto:
+   ```bash
+   cd appcoder
+   ```
 
-    ```bash
-    cd appcoder
-    ```
+3. Instala las dependencias necesarias:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   
+5. Aplica las migraciones de la base de datos:
+   ```bash
+   python manage.py migrate
+   ```
 
-3. Crea un entorno virtual e instala las dependencias necesarias:
+6. Crea un superusuario para poder acceder al panel de administración:
+   ```bash
+   python manage.py createsuperuser
+   ```
 
-    ```bash
-    python -m venv env
-    source env/bin/activate  # En Windows: env\Scripts\activate
-    ```
+7. Ejecuta el servidor de desarrollo:
+   ```bash
+   python manage.py runserver
+   ```
 
-4. Aplica las migraciones para crear las tablas en la base de datos:
+8. Accede a la aplicación en tu navegador en `http://127.0.0.1:8000`.
 
-    ```bash
-    python manage.py migrate
-    ```
+## Capturas de Pantalla
 
-5. Corre el servidor de desarrollo:
+A continuación, algunas capturas de pantalla de la interfaz de la aplicación:
 
-    ```bash
-    python manage.py runserver
-    ```
+### Página principal
+![Página principal](https://raw.githubusercontent.com/GBronzi/proyecto_1/refs/heads/master/AppCoder/static/img/pag_1.png)
 
-6. Abre tu navegador y visita `http://127.0.0.1:8000/
+### Gestión de Socios
+![Gestión de Socios](https://raw.githubusercontent.com/GBronzi/proyecto_1/refs/heads/master/AppCoder/static/img/pag_2.png))
+
+### Gestión de Instructores
+![Gestiond de Instructores](https://raw.githubusercontent.com/GBronzi/proyecto_1/refs/heads/master/AppCoder/static/img/pag_3.png)

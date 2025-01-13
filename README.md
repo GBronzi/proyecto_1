@@ -64,7 +64,7 @@ La página principal de la aplicación (index.html) incluye las siguientes secci
 A continuación, algunas capturas de pantalla de la interfaz de la aplicación:
 
 ### Página principal
-![Página principal](https://raw.githubusercontent.com/GBronzi/proyecto_1/refs/heads/master/AppCoder/static/img/pag_1.1.png)
+![Página principal][(https://raw.githubusercontent.com/GBronzi/proyecto_1/refs/heads/main/AppCoder/static/img/pag_1.1.png)
 
 ### Gestión de Socios
 ![Gestión de Socios](https://raw.githubusercontent.com/GBronzi/proyecto_1/refs/heads/master/AppCoder/static/img/pag_2.png)

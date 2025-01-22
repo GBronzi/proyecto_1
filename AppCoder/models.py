@@ -1,7 +1,8 @@
 from django.db import models
 
+
 class Socio(models.Model):
-    # Opciones de tipos de clase
+    
     tipos_clases = [
         ('musculacion', 'Musculación'),
         ('spinning', 'Spinning'),

@@ -1,0 +1,24 @@
+{% extends "AppCoder/index.html" %}
+{% load static %}
+<title>
+    {% block titulo %}
+        Editar Actividad
+    {% endblock %}
+{% block cuerpo %}
+
+<div class="container my-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-warning text-white">
+            <h2 class="mb-0">Modificar Actividad</h2>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Guardar cambios</button>
+                <a href="{% url 'lista_actividades' %}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

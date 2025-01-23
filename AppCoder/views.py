@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import SocioForm, InstructorForm
-from .models import Socio, Instructor
+from .forms import SocioForm, InstructorForm, ActividadForm, ActividadForm
+from .models import Socio, Instructor, Actividad
 from django.db.models import Q
 
 # =============================Paginas=====================
@@ -44,6 +44,41 @@ def cargar_instructor(request):
 def lista_instructores(request):
     instructores = Instructor.objects.all()
     return render(request, 'AppCoder/lista_instructores.html', {'instructores': instructores})
+
+# =============================Actividad============================================
+def lista_actividades(request):
+    actividades = Actividad.objects.all()
+    return render(request, 'AppCoder/lista_actividades.html', {'actividades': actividades})
+
+def cargar_actividad(request):
+    if request.method == 'POST':
+        form = ActividadForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_actividades')
+    else:
+        form = ActividadForm()
+    return render(request, 'AppCoder/form_actividad.html', {'form': form})
+
+# =============================Actividad============================================
+def editar_actividad(request, pk):
+    actividad = Actividad.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = ActividadForm(request.POST, instance=actividad)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_actividades')
+    else:
+        form = ActividadForm(instance=actividad)
+    return render(request, 'AppCoder/editar_actividad.html', {'form': form})
+
+# =============================Eliminar============================================
+def eliminar_actividad(request, pk):
+    actividad = Actividad.objects.get(pk=pk)
+    if request.method == 'POST':
+        actividad.delete()
+        return redirect('lista_actividades')  # Redirige a la lista de actividades
+    return render(request, 'AppCoder/eliminar_actividad.html', {'actividad': actividad})
 
 # =============================BUSQUEDA=======================================================
 def buscar(request):

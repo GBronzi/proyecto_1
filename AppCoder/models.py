@@ -1,8 +1,8 @@
 from django.db import models
 
-# Modelo Socio (anteriormente Estudiante)
+
 class Socio(models.Model):
-    # Opciones de tipos de clase
+    
     tipos_clases = [
         ('musculacion', 'Musculación'),
         ('spinning', 'Spinning'),
@@ -23,9 +23,8 @@ class Socio(models.Model):
     def __str__(self):
         return f"{self.nombre} {self.apellido} - {self.tipo_clase}"
 
-# Modelo Instructor
 class Instructor(models.Model):
-    # Opciones de especialidad
+    
     especialidades = [
         ('musculacion', 'Musculación'),
         ('spinning', 'Spinning'),
@@ -44,3 +43,13 @@ class Instructor(models.Model):
     def __str__(self):
         return f"{self.nombre} {self.apellido} - {self.especialidad}"
 
+class Actividad(models.Model):
+    nombre = models.CharField(max_length=50)
+    descripcion = models.TextField(blank=True, null=True)
+    duracion = models.DurationField(help_text="Duración de la actividad (ejemplo: 01:30:00)")
+    instructor = models.ForeignKey('Instructor', on_delete=models.SET_NULL, null=True, related_name='actividades')
+    horario = models.TimeField(help_text="Hora de inicio de la actividad")
+    cupo_maximo = models.IntegerField(help_text="Cantidad máxima de participantes")
+
+    def __str__(self):
+        return f"{self.nombre} - {self.instructor.nombre if self.instructor else 'Sin instructor'}"

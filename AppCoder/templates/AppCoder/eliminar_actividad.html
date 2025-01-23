@@ -1,0 +1,24 @@
+{% extends "AppCoder/index.html" %}
+{% load static %}
+<title>
+    {% block titulo %}
+        Eliminar Actividad
+    {% endblock %}
+{% block cuerpo %}
+
+<div class="container my-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-danger text-white">
+            <h2 class="mb-0">¿Estás seguro?</h2>
+        </div>
+        <div class="card-body">
+            <p>¿Seguro que deseas eliminar la actividad <strong>{{ actividad.nombre }}</strong>?</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <a href="{% url 'lista_actividades' %}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

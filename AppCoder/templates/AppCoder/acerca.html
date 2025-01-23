@@ -1,0 +1,46 @@
+{% extends "AppCoder/index.html" %}
+{% load static %}
+
+<title>
+    {% block titulo %}
+        Acerca de AppCoder
+    {% endblock %}
+</title>
+{% block cuerpo %}
+<div class="container my-5">
+    <h1 class="text-center">Acerca del GymMaster</h1>
+    <p class="text-center">Esta plataforma está diseñada para facilitar la gestión de socios e instructores de manera eficiente y organizada.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h3>Mi Misión</h3>
+            <p>En nuestra plataforma, mi misión es simplificar la administración del gimnasio mediante una herramienta intuitiva y fácil de usar. Quiero proporcionar a los gimnasios las herramientas necesarias para gestionar sus recursos humanos y socios de manera eficaz.</p>
+        </div>
+        <div class="col-md-6">
+            <h3>Características Principales</h3>
+            <ul>
+                <li>Gestión de Socios: Registro y administración de información de los miembros del gimnasio.</li>
+                <li>Gestión de Instructores: Registro y administración de información de los instructores.</li>
+                <li>Búsqueda Eficiente: Herramienta de búsqueda para encontrar rápidamente información relevante.</li>
+                <li>Interfaz Intuitiva: Diseño amigable que facilita la navegación y el uso de la plataforma.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h3>Sobre Mauricio Bronzi</h3>
+            <p>Esta plataforma ha sido desarrollada con mucho esfuerzo. Un apasionado por la tecnología y el fitness. Trabajo constantemente para mejorar la plataforma y ofrecer la mejor experiencia a los usuarios.</p>
+            <p>Me especializo en el desarrollo web con Django, HTML, y CSS, y mi objetivo es crear herramientas útiles y fáciles de usar para el mundo del fitness.</p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h3>Contacto</h3>
+            <p>Si tienes alguna pregunta o necesitas soporte, no dudes en contactarme a través de nuestro <a href="{% url 'contacto' %}">formulario de contacto</a>.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

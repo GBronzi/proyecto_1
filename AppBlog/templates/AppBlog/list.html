@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+    
+<title>
+    {% block titulo %}
+    Lista de Post
+    {% endblock %}
+</title>
+
+{% block cuerpo %}
+<div class="container my-4"></div>
+    <h3 class="mb-4 tittle-post">Bienvenido a mi blog</h3>
+    <div style="text-align: center;">
+        <a href="{% url 'AppBlog:create' %}" class="btn btn-success me-2">Crear nuevo post</a>
+    </div></div>
+    <hr>
+    <ul class="row row-post">
+        {% for post in posts %}
+            <li class="col-md-6 mb-4">
+                        <div class="card-post">
+                            <div class="card-body-post">
+                                <a href="{% url 'AppBlog:detail' post.pk %}" class="btn btn-success me-2 card-title-post">{{ post.title }}</a>
+                                <p class="text-muted hour-fech">Publicado: {{ post.created_at|date:"d M Y" }}</p>
+                                <p class="text-muted hour-fech">Hora: {{ post.created_at|date:"H:i" }}</p>
+                                <p class = "card-content-post">{{ post.content }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>               
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

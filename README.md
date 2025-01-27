@@ -38,9 +38,7 @@ La página principal de la aplicación (index.html) incluye las siguientes secci
 3. Instala las dependencias necesarias:
    ```bash
    pip install -r requirements.txt
-   ```
-   Django          5.1.4
-   virtualenv      20.28.0
+   
 
 5. Aplica las migraciones de la base de datos:
    ```bash
@@ -70,4 +68,4 @@ A continuación, algunas capturas de pantalla de la interfaz de la aplicación:
 ![Gestión de Socios](https://raw.githubusercontent.com/GBronzi/proyecto_1/refs/heads/master/AppCoder/static/img/pag_2.png)
 
 ### Gestión de Instructores
-![Gestiond de Instructores](https://raw.githubusercontent.com/GBronzi/proyecto_1/refs/heads/master/AppCoder/static/img/pag_3.png)
+![Gestion de Instructores](https://raw.githubusercontent.com/GBronzi/proyecto_1/refs/heads/master/AppCoder/static/img/pag_3.png)

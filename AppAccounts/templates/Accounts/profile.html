@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Perfil de {{ user.user.username }}</h2>
+  <img src="{{ user.avatar.url }}" alt="{{ user.user.username }}" width="100">
+  <p><strong>Nombre:</strong> {{ user.user.first_name }} {{ user.user.last_name }}</p>
+  <p><strong>Email:</strong> {{ user.user.email }}</p>
+  <p><strong>Biografía:</strong> {{ user.bio }}</p>
+  <p><strong>Fecha de nacimiento:</strong> {{ user.birthday }}</p>
+  <a href="{% url 'edit_profile' %}">Editar perfil</a>
+{% endblock %}

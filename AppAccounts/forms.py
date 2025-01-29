@@ -4,8 +4,10 @@ from django.contrib.auth.forms import AuthenticationForm
 from .models import Profile
 
 class UserRegistrationForm(forms.ModelForm):
-    password1 = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(label="Nombre de usuario", widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}), label="Contraseña")
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}), label="Repetir Contraseña")
+    email = forms.EmailField(label="Correo", widget=forms.EmailInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
@@ -13,26 +15,48 @@ class UserRegistrationForm(forms.ModelForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
-            # Crear un perfil con los datos adicionales
-            profile = Profile.objects.create(user=user)
-            profile.avatar = self.cleaned_data.get('avatar')
-            profile.save()
+            Profile.objects.create(user=user)
         return user
 
-# Formulario de edición de perfil (Profile)
 class EditProfileForm(forms.ModelForm):
-    avatar = forms.ImageField(required=False)
-    bio = forms.CharField(widget=forms.Textarea, required=False)
-    birthday = forms.DateField(required=False)
+    first_name = forms.CharField(label="Nombre", widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
+    last_name = forms.CharField(label="Apellido", widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
+    avatar = forms.ChoiceField(choices=[
+        ('avatars/avatar1.png', 'Avatar 1'),
+        ('avatars/avatar2.png', 'Avatar 2'),
+        ('avatars/avatar3.png', 'Avatar 3'),
+        ('avatars/avatar4.png', 'Avatar 4'),
+        ('avatars/avatar5.png', 'Avatar 5'),
+        ('avatars/avatar6.png', 'Avatar 6'),
+        ('avatars/avatar7.png', 'Avatar 7'),
+        ('avatars/avatar8.png', 'Avatar 8'),
+        ('avatars/avatar9.png', 'Avatar 9'),
+        ('avatars/avatar10.png', 'Avatar 10'),
+        ('avatars/avatar11.png', 'Avatar 11'),
+        ('avatars/avatar12.png', 'Avatar 12'),
+        ('avatars/avatar13.png', 'Avatar 13'),
+    ], required=False, widget=forms.RadioSelect)
+    bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 3}), required=False)
+    birthday = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}), required=False)
+    address = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
+    phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'pattern': '[0-9]{3}-[0-9]{3}-[0-9]{4}', 'placeholder': 'Ingresa tu numero personal: xxx-xxx-xxxx'}), required=False)
 
     class Meta:
         model = Profile
-        fields = ['avatar', 'bio', 'birthday']
+        fields = ['first_name', 'last_name', 'avatar', 'bio', 'birthday', 'address', 'phone']
 
-# Formulario de autenticación de usuario
+    def __init__(self, *args, **kwargs):
+        super(EditProfileForm, self).__init__(*args, **kwargs)
+        self.fields['first_name'].initial = self.instance.user.first_name
+        self.fields['last_name'].initial = self.instance.user.last_name
+
 class ProfileAuthenticationForm(AuthenticationForm):
+    username = forms.CharField(label="Nombre de usuario", widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(label="Contraseña", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
     class Meta:
         model = User
         fields = ['username', 'password']

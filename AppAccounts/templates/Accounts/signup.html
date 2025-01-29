@@ -1,11 +1,45 @@
-{% extends 'base.html' %}
+{% extends 'base_signup.html' %}
+{% load static %}
 
-{% block content %}
-  <h2>Crear una cuenta</h2>
-  <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Registrar cuenta</button>
-  </form>
-  <p>¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión aquí</a></p>
+{% block titulo %}Crear una cuenta{% endblock %}
+
+{% block cuerpo %}
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div class="card-header bg-success text-white">
+          <h1 class="text-center">Crear Usuario</h1>
+        </div>
+        <div class="card-body">
+          <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              {{ form.username.label_tag }}
+              {{ form.username }}
+            </div>
+            <div class="form-group">
+              {{ form.email.label_tag }}
+              {{ form.email }}
+            </div>
+            <div class="form-group">
+              {{ form.password1.label_tag }}
+              {{ form.password1 }}
+            </div>
+            <div class="form-group">
+              {{ form.password2.label_tag }}
+              {{ form.password2 }}
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+              <button type="submit" class="btn btn-success m-2">Registrar Usuario</button>
+              <a href="{% url 'index' %}" class="btn btn-secondary m-2">Salir</a>
+            </div>
+          </form>
+          <br>
+          <p>¿Ya tienes cuenta? <a href="{% url 'AppAccounts:login' %}">Inicia sesión aquí</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

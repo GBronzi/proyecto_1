@@ -1,11 +1,37 @@
-{% extends 'base.html' %}
+{% extends 'base_login.html' %}
+{% load static %}
 
-{% block content %}
-  <h2>Iniciar sesión</h2>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Iniciar sesión</button>
-  </form>
-  <p>¿No tienes cuenta? <a href="{% url 'register' %}">Regístrate aquí</a></p>
+{% block titulo %}Iniciar sesión{% endblock %}
+
+{% block cuerpo %}
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div class="card-header bg-success text-white">
+          <h3 class="text-center">Iniciar Sesión</h3>
+        </div>
+        <div class="card-body">
+          <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              {{ form.username.label_tag }}
+              {{ form.username }}
+            </div>
+            <div class="form-group">
+              {{ form.password.label_tag }}
+              {{ form.password }}
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+                <button type="submit" class="btn btn-success m-2">Iniciar sesión</button>
+                <a href="{% url 'index' %}" class="btn btn-secondary m-2">Salir</a>
+            </div>
+          </form>
+          <br>
+          <p>¿No tienes cuenta? <a href="{% url 'AppAccounts:register' %}">Regístrate aquí</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

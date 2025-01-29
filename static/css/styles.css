@@ -148,7 +148,7 @@
 }
 
 .hero-section {
-    background: linear-gradient(rgba(255, 255, 255, 0.252), rgba(255, 255, 255, 0.252)), url("../images/img.png") no-repeat center center;
+    background: linear-gradient(rgba(255, 255, 255, 0.252), rgba(255, 255, 255, 0.252)), url("../img/img.png") no-repeat center center;
     background-size: cover;
     color: white;
     height: 80vh;
@@ -259,7 +259,7 @@
 }
 
 .card-header {
-    padding: 15px; /* Ajusta el espacio dentro del encabezado de la tarjeta */
+    padding: 10px; /* Ajusta el espacio dentro del encabezado de la tarjeta */
 }
 .mb-3.row {
     display: flex;
@@ -295,3 +295,69 @@
     width: 40px;
     height: 40px;
 }
+
+.card-login {
+    border: 1px solid black;
+    width: 100%;
+    max-width: 400px; /* Ancho máximo de la tarjeta */
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* Color de fondo blanco */
+}
+
+.full-height-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+.card-editlogin {
+    border: 1px solid black;
+    width: 100%;
+    max-width: 400px; /* Ancho máximo de la tarjeta */
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* Color de fondo blanco */
+}
+
+.avatar-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.avatar-selection label {
+    cursor: pointer;
+}
+
+.avatar-selection input[type="radio"] {
+    display: none;
+}
+
+.avatar-selection img {
+    border: 2px solid transparent;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+}
+
+.avatar-selection input[type="radio"]:checked + img {
+    border-color: #28a745;
+}
+
+.card-profile .card-body h4 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem; /* Reducir el tamaño de la letra */
+}
+
+.form-g input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }

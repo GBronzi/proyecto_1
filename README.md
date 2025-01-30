@@ -41,7 +41,6 @@ La aplicación está compuesta por diferentes secciones que permiten una gestió
    ```bash
    pip install -r requirements.txt
    
-
 5. Aplica las migraciones de la base de datos:
    ```bash
    python manage.py migrate

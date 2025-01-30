@@ -14,44 +14,20 @@
             <ul class="nav nav-pills">
                 <li class="nav-item">
                     <a class="nav-link active bg-success {% if request.resolver_match.url_name == 'index' %}{% endif %}" aria-current="page" href="{% url 'index' %}">
-                        {% if request.resolver_match.url_name == 'index' %}
+                        {% if request.resolver_match.url_name in 'index,acerca,contacto' %}
                         AppCoder
-                        {% elif request.resolver_match.url_name == 'lista_socios' %}
+                        {% elif request.resolver_match.url_name in 'lista_socios,cargar_socio' %}
                         Socios
-                        {% elif request.resolver_match.url_name == 'lista_instructores' %}
+                        {% elif request.resolver_match.url_name in 'lista_instructores,cargar_instructor' %}
                         Instructores
-                        {% elif request.resolver_match.url_name == 'lista_actividades' %}
-                        Actividades
-                        {% elif request.resolver_match.url_name == 'cargar_socio' %}
-                        Socios
-                        {% elif request.resolver_match.url_name == 'cargar_instructor' %}
-                        Instructores
-                        {% elif request.resolver_match.url_name == 'cargar_actividad' %}
-                        Actividades
-                        {% elif request.resolver_match.url_name == 'list' %}
+                        {% elif request.resolver_match.url_name in 'cargar_actividad,lista_actividades' %}
+                        Actividad
+                        {% elif request.resolver_match.url_name in 'list,create,detail,update,delete' %}
                         Blog
-                        {% elif request.resolver_match.url_name == 'create' %}
-                        Blog
-                        {% elif request.resolver_match.url_name == 'detail' %}
-                        Blog
-                        {% elif request.resolver_match.url_name == 'update' %}
-                        Blog
-                        {% elif request.resolver_match.url_name == 'delete' %}
-                        Blog
-                        {% elif request.resolver_match.url_name == 'acerca' %}
-                        Acerca
-                        {% elif request.resolver_match.url_name == 'contacto' %}
-                        Contacto
-                        {% elif request.resolver_match.url_name == 'login' %}
+                        {% elif request.resolver_match.url_name in 'inbox,message_detail,send_message' %}
+                        Mensajes
+                        {% elif request.resolver_match.url_name in 'login,edit_profile,change_password,profile,signup,register' %}
                         Usuario
-                        {% elif request.resolver_match.url_name == 'register' %}
-                        Registro de Usuario
-                        {% elif request.resolver_match.url_name == 'profile' %}
-                        Perfil
-                        {% elif request.resolver_match.url_name == 'edit_profile' %}
-                        Editar Perfil
-                        {% elif request.resolver_match.url_name == 'change_password' %}
-                        Cambiar Contraseña
                         {% else %}
                         App{{ request.resolver_match.url_name|capfirst }}
                         {% endif %}

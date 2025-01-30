@@ -4,7 +4,7 @@ from .models import Socio, Instructor, Actividad
 from django.db.models import Q
 from django.contrib import messages
 
-# =============================Paginas=====================
+# =============================Paginas================================================
 def index(request):
     return render(request, 'AppCoder/index.html')
 

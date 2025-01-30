@@ -9,4 +9,5 @@ urlpatterns = [
     path('create/', PostCreateView.as_view(), name='create'),  # Crear un post
     path('update/<int:pk>/', PostUpdateView.as_view(), name='update'),  # Editar un post
     path('delete/<int:pk>/', PostDeleteView.as_view(), name='delete'),  # Borrar un post
+    
 ]

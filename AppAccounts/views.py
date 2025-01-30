@@ -7,6 +7,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from .models import Profile
+from django.conf import settings
+
 
 def login_view(request):
     if request.method == "POST":
@@ -63,6 +65,10 @@ def edit_profile_view(request):
     else:
         form = EditProfileForm(instance=request.user.profile)
     return render(request, 'Accounts/edit_profile.html', {'form': form})
+
+def edit_profile(request):
+    form = EditProfileForm(instance=request.user.profile)
+    return render(request, "edit_perfil.html", {"form": form, "MEDIA_URL": settings.MEDIA_URL})
 
 class CustomPasswordChangeView(PasswordChangeView):
     template_name = 'Accounts/change_password.html'  

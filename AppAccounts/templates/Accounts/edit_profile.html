@@ -20,10 +20,12 @@
           {{ form.last_name.label_tag }}
           {{ form.last_name }}
         </div>
+        <p></p>
         <div class="form-group">
           {{ form.bio.label_tag }}
           {{ form.bio }}
         </div>
+        <p></p>
         <div class="form-group">
           {{ form.birthday.label_tag }}
           {{ form.birthday }}
@@ -36,20 +38,27 @@
           {{ form.phone.label_tag }}
           {{ form.phone }}
         </div>
-        <div class="avatar-selection">
-          {% for value, label in form.avatar.field.choices %}
-            <label>
-              <input type="radio" name="avatar" value="{{ value }}" {% if form.avatar.value == value %}checked{% endif %}>
-              <img src="{{ MEDIA_URL }}{{ value }}" alt="{{ label }}">
-            </label>
-          {% endfor %}
+        <p></p>
+        <div class="form-group">
+          <label>Selecciona tu avatar:</label>
+          <p></p>
+          <div class="avatar-selection">
+            {% for value, label in form.fields.avatar.choices %}
+              <label class="avatar-label">
+                <input type="radio" name="avatar" value="{{ value }}" {% if form.avatar.value == value %}checked{% endif %}>
+                <img src="{{ MEDIA_URL }}{{ value }}" alt="{{ label }}" class="avatar-img">
+              </label>
+            {% endfor %}
+          </div>
         </div>
-        <div class="d-flex justify-content-end mt-3">
+
+        <div class="justify-content-end mt-3">
           <button type="submit" class="btn btn-success me-2">Guardar cambios</button>
-          <a href="{% url 'AppAccounts:profile' %}" class="btn btn-secondary">Volver al perfil</a>
+          <button href="{% url 'AppAccounts:profile' %}" class="btn btn-secondary m-2">Volver al perfil</button>
         </div>
       </form>
     </div>
   </div>
 </div>
 {% endblock %}
+

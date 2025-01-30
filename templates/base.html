@@ -42,10 +42,6 @@
                         Acerca
                         {% elif request.resolver_match.url_name == 'contacto' %}
                         Contacto
-                        {% elif request.resolver_match.url_name == 'login' %}
-                        Usuario
-                        {% elif request.resolver_match.url_name == 'register' %}
-                        Registro de Usuario
                         {% else %}
                         App{{ request.resolver_match.url_name|capfirst }}
                         {% endif %}
@@ -87,10 +83,8 @@
             <ul class="nav nav-pills">
                 <li class="nav-item">
                     {% if user.is_authenticated %}
-                    <span>{{ user.username }}</span>
-                    <button>
-                        <img class="img-login" src="{{ user.profile.avatar.url|default:'/media/avatars/user.png' }}" alt="Avatar">
-                    </button>
+                    <span class="text-white">{{ user.username }}</span>
+                    <img class="img-login" src="{{ user.profile.avatar.url|default:'/media/avatars/avataruser.png' }}" alt="Avatar">
                     <li><a class="nav-link" href="{% url 'AppAccounts:profile' %}" style="color: #d6d6d6;">Perfil</a></li>
                     <li><a class="nav-link" href="{% url 'AppAccounts:logout' %}" style="color: #d6d6d6;">Logout</a></li>
                     {% if user.is_staff %}

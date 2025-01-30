@@ -22,7 +22,7 @@
                                 <a href="{% url 'AppBlog:detail' post.pk %}" class="btn btn-success me-2 card-title-post">{{ post.title }}</a>
                                 <p class="text-muted hour-fech">Publicado: {{ post.created_at|date:"d M Y" }}</p>
                                 <p class="text-muted hour-fech">Hora: {{ post.created_at|date:"H:i" }}</p>
-                                <p class = "card-content-post">{{ post.content }}</p>
+                                <p class="card-content-post" style="word-wrap: break-word;">{{ post.content|truncatechars:100 }}</p>
                             </div>
                         </div>
                     </div>

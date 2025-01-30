@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
+from ckeditor.widgets import CKEditorWidget
 from .models import Profile
 
 class UserRegistrationForm(forms.ModelForm):
@@ -24,7 +25,8 @@ class UserRegistrationForm(forms.ModelForm):
 class EditProfileForm(forms.ModelForm):
     first_name = forms.CharField(label="Nombre", widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
     last_name = forms.CharField(label="Apellido", widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
-    avatar = forms.ChoiceField(choices=[
+    
+    AVATAR_CHOICES = [
         ('avatars/avatar1.png', 'Avatar 1'),
         ('avatars/avatar2.png', 'Avatar 2'),
         ('avatars/avatar3.png', 'Avatar 3'),
@@ -38,11 +40,18 @@ class EditProfileForm(forms.ModelForm):
         ('avatars/avatar11.png', 'Avatar 11'),
         ('avatars/avatar12.png', 'Avatar 12'),
         ('avatars/avatar13.png', 'Avatar 13'),
-    ], required=False, widget=forms.RadioSelect)
-    bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 3}), required=False)
-    birthday = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}), required=False)
-    address = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
-    phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'pattern': '[0-9]{3}-[0-9]{3}-[0-9]{4}', 'placeholder': 'Ingresa tu numero personal: xxx-xxx-xxxx'}), required=False)
+    ]
+
+    avatar = forms.ChoiceField(
+        choices=AVATAR_CHOICES, 
+        required=False, 
+        widget=forms.RadioSelect
+    )
+
+    bio = forms.CharField(label="Biografia",widget=CKEditorWidget(), required=False)
+    birthday = forms.DateField(label="Fecha de nacimiento", widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}), required=False)
+    address = forms.CharField(label="Dirección", widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
+    phone = forms.CharField(label="Telefono", widget=forms.TextInput(attrs={'class': 'form-control', 'pattern': '[0-9]{3}-[0-9]{3}-[0-9]{4}', 'placeholder': 'Ingresa tu numero personal: xxx-xxx-xxxx'}), required=False)
 
     class Meta:
         model = Profile
@@ -50,8 +59,14 @@ class EditProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(EditProfileForm, self).__init__(*args, **kwargs)
+
+
         self.fields['first_name'].initial = self.instance.user.first_name
         self.fields['last_name'].initial = self.instance.user.last_name
+
+        if self.instance.avatar:
+            self.fields['avatar'].initial = self.instance.avatar
+
 
 class ProfileAuthenticationForm(AuthenticationForm):
     username = forms.CharField(label="Nombre de usuario", widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -60,3 +75,5 @@ class ProfileAuthenticationForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ['username', 'password']
+        
+        

@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'AppTienda',
     'templates',
     'media',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +58,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -98,7 +101,16 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR / "static"),
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/files')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/files')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+    },
+}
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),

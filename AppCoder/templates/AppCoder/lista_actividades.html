@@ -4,9 +4,8 @@
     {% block titulo %}
         Lista de Actividades
     {% endblock %}
-
+</title>
 {% block cuerpo %}
-
 <div class="container my-4">
     <h3 class="mb-4">Lista de Actividades</h3>
     <table class="table table-striped table-bordered">
@@ -15,6 +14,7 @@
                 <th>#</th>
                 <th>Nombre</th>
                 <th>Horario</th>
+                <th>Especialidad</th>
                 <th>Instructor</th>
                 <th>Acciones</th>
             </tr>
@@ -25,6 +25,7 @@
                 <td>{{ forloop.counter }}</td>
                 <td>{{ actividad.nombre }}</td>
                 <td>{{ actividad.horario }}</td>
+                <td>{{ actividad.especialidad }}</td>
                 <td>
                     {% if actividad.instructor %}
                         {{ actividad.instructor.nombre }}
@@ -40,12 +41,12 @@
             </tr>
             {% empty %}
             <tr>
-                <td colspan="5" class="text-center">No hay actividades registradas.</td>
+                <td colspan="6" class="text-center">No hay actividades registradas.</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <a href="{% url 'cargar_instructor' %}" class="btn btn-success me-2">Crear nueva actividad</a>
-            <a href="{% url 'index' %}" class="btn btn-secondary">Inicio</a>
+    <a href="{% url 'cargar_actividad' %}" class="btn btn-success me-2">Crear nueva actividad</a>
+    <a href="{% url 'index' %}" class="btn btn-secondary">Inicio</a>
 </div>
 {% endblock %}

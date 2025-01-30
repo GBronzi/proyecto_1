@@ -44,12 +44,37 @@ class Instructor(models.Model):
         return f"{self.nombre} {self.apellido} - {self.especialidad}"
 
 class Actividad(models.Model):
+    DURACIONES = [
+        ('00:30:00', '30 minutos'),
+        ('01:00:00', '1 hora'),
+        ('01:30:00', '1 hora y 30 minutos'),
+        ('02:00:00', '2 horas'),
+    ]
+    
+    HORARIOS = [
+        ('06:00:00', '06:00 AM'),
+        ('07:00:00', '07:00 AM'),
+        ('08:00:00', '08:00 AM'),
+        ('09:00:00', '09:00 AM'),
+        ('10:00:00', '10:00 AM'),
+        ('11:00:00', '11:00 AM'),
+        ('12:00:00', '12:00 PM'),
+        ('13:00:00', '01:00 PM'),
+        ('14:00:00', '02:00 PM'),
+        ('15:00:00', '03:00 PM'),
+        ('16:00:00', '04:00 PM'),
+        ('17:00:00', '05:00 PM'),
+        ('18:00:00', '06:00 PM'),
+        ('19:00:00', '07:00 PM'),
+        ('20:00:00', '08:00 PM'),
+    ]
+    
     nombre = models.CharField(max_length=50)
     descripcion = models.TextField(blank=True, null=True)
-    duracion = models.DurationField(help_text="Duración de la actividad (ejemplo: 01:30:00)")
-    instructor = models.ForeignKey('Instructor', on_delete=models.SET_NULL, null=True, related_name='actividades')
-    horario = models.TimeField(help_text="Hora de inicio de la actividad")
-    cupo_maximo = models.IntegerField(help_text="Cantidad máxima de participantes")
+    duracion = models.CharField(max_length=8, choices=DURACIONES, default='01:00:00')
+    especialidad = models.CharField(max_length=50, choices=Instructor.especialidades)
+    horario = models.CharField(max_length=8, choices=HORARIOS, default='06:00:00')
+    instructor = models.ForeignKey(Instructor, on_delete=models.SET_NULL, null=True, related_name='actividades')
 
     def __str__(self):
-        return f"{self.nombre} - {self.instructor.nombre if self.instructor else 'Sin instructor'}"
+        return f"{self.nombre} - {self.especialidad}"

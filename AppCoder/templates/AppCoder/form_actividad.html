@@ -1,24 +1,48 @@
 {% extends "base.html" %}
 {% load static %}
+
 <title>
     {% block titulo %}
         Crear Actividad
     {% endblock %}
 </title>
 {% block cuerpo %}
-
 <div class="container my-5">
     <div class="card shadow-lg">
         <div class="card-header bg-success text-white">
             <h2 class="mb-0">Cargar Actividad</h2>
         </div>
         <div class="card-body">
-            <form method="post">
+            <form method="post" class="needs-validation" novalidate>
                 {% csrf_token %}
-                {{ form.as_p }}
-                <div class="d-flex justify-content-end"></div>
-                <button type="submit" class="btn btn-success">Guardar</button>
-                <a href="{% url 'index' %}" class="btn btn-secondary">Inicio</a>
+                <div class="form-group" style="margin-bottom: 1rem; text-align: left;">
+                    {{ form.nombre.label_tag }}
+                    {{ form.nombre }}
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem; text-align: left;">
+                    {{ form.descripcion.label_tag }}
+                    {{ form.descripcion }}
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem; text-align: left;">
+                    {{ form.duracion.label_tag }}
+                    {{ form.duracion }}
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem; text-align: left;">
+                    {{ form.especialidad.label_tag }}
+                    {{ form.especialidad }}
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem; text-align: left;">
+                    {{ form.horario.label_tag }}
+                    {{ form.horario }}
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem; text-align: left;">
+                    {{ form.instructor.label_tag }}
+                    {{ form.instructor }}
+                </div>
+                <div class="d-flex justify-content-end mt-3">
+                    <button type="submit" class="btn btn-success me-2">Guardar</button>
+                    <a href="{% url 'index' %}" class="btn btn-secondary">Inicio</a>
+                </div>
             </form>
         </div>            
     </div>

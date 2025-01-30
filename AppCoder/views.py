@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import SocioForm, InstructorForm, ActividadForm, ActividadForm
+from .forms import SocioForm, InstructorForm, ActividadForm
 from .models import Socio, Instructor, Actividad
 from django.db.models import Q
 

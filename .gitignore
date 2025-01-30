@@ -5,7 +5,7 @@ __pycache__/
 db.sqlite3
 
 # Ignorar archivos media (imágenes, archivos subidos)
-media/post
+media/posts
 media/files
 
 # Byte-compiled / optimized / DLL files

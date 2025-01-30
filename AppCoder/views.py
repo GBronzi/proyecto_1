@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import SocioForm, InstructorForm, ActividadForm
 from .models import Socio, Instructor, Actividad
 from django.db.models import Q
+from django.contrib import messages
 
 # =============================Paginas=====================
 def index(request):
@@ -19,6 +20,8 @@ def cargar_socio(request):
         form = SocioForm(request.POST)
         if form.is_valid():
             form.save()
+            # Mensaje de éxito
+            messages.success(request, '¡Socio cargado con éxito!')
             return redirect('lista_socios')
     else:
         form = SocioForm()
@@ -35,6 +38,8 @@ def cargar_instructor(request):
         form = InstructorForm(request.POST)
         if form.is_valid():
             form.save()
+            # Mensaje de éxito
+            messages.success(request, '¡Instructor cargado con éxito!')
             return redirect('lista_instructores')
     else:
         form = InstructorForm()
@@ -45,7 +50,7 @@ def lista_instructores(request):
     instructores = Instructor.objects.all()
     return render(request, 'AppCoder/lista_instructores.html', {'instructores': instructores})
 
-# =============================Actividad============================================
+# =============================Actividad=============================================
 def lista_actividades(request):
     actividades = Actividad.objects.all()
     return render(request, 'AppCoder/lista_actividades.html', {'actividades': actividades})
@@ -55,28 +60,34 @@ def cargar_actividad(request):
         form = ActividadForm(request.POST)
         if form.is_valid():
             form.save()
+            # Mensaje de éxito
+            messages.success(request, '¡Actividad cargada con éxito!')
             return redirect('lista_actividades')
     else:
         form = ActividadForm()
     return render(request, 'AppCoder/form_actividad.html', {'form': form})
 
-# =============================Actividad============================================
+# =============================Editar Actividad=============================================
 def editar_actividad(request, pk):
     actividad = Actividad.objects.get(pk=pk)
     if request.method == 'POST':
         form = ActividadForm(request.POST, instance=actividad)
         if form.is_valid():
             form.save()
+            # Mensaje de éxito
+            messages.success(request, '¡Actividad actualizada con éxito!')
             return redirect('lista_actividades')
     else:
         form = ActividadForm(instance=actividad)
     return render(request, 'AppCoder/editar_actividad.html', {'form': form})
 
-# =============================Eliminar============================================
+# =============================Eliminar Actividad=============================================
 def eliminar_actividad(request, pk):
     actividad = Actividad.objects.get(pk=pk)
     if request.method == 'POST':
         actividad.delete()
+        # Mensaje de éxito
+        messages.success(request, '¡Actividad eliminada con éxito!')
         return redirect('lista_actividades')  # Redirige a la lista de actividades
     return render(request, 'AppCoder/eliminar_actividad.html', {'actividad': actividad})
 

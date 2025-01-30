@@ -1,30 +1,32 @@
-# Proyecto AppCoder
+# Proyecto  Gestión de Socios e Instructores
 
-Este es un proyecto para gestionar socios e instructores en un gimnasio. Se construyó utilizando Django para el backend y HTML con Bootstrap para la interfaz de usuario. El sistema permite agregar, ver y buscar tanto socios como instructores.
+Este es un proyecto para gestionar socios e instructores en un gimnasio. Se ha desarrollado utilizando **Django** para el backend y **HTML con Bootstrap** para la interfaz de usuario. El sistema permite agregar, ver y buscar tanto socios como instructores, así como gestionar actividades realizadas por los socios.
 
 ## Descripción
 
-La página principal de la aplicación (index.html) incluye las siguientes secciones:
+La aplicación está compuesta por diferentes secciones que permiten una gestión completa de socios, instructores y actividades:
 
-- **Navbar**: Menú de navegación para acceder a las secciones de gestión de socios, instructores, acerca y contacto.
-- **Hero Section**: Mensaje de bienvenida que invita al usuario a seleccionar una opción del menú para gestionar socios o instructores.
-- **Gestión de Socios**: Sección que permite agregar nuevos socios o consultar la lista de socios existentes.
-- **Gestión de Instructores**: Sección similar a la de socios, pero para los instructores del gimnasio.
-- **Gestion de Actividades**: Sección donde pueden cargar las actividades realizadas por los socios
-- **Buscador**: Sección para buscar socios o instructores por nombre, apellido o correo electrónico.
+- **Navbar**: Menú de navegación para acceder a las secciones de gestión de socios, instructores, actividades, perfiles y mensajería.
+- **Hero Section**: Un mensaje de bienvenida que invita al usuario a seleccionar una opción del menú para gestionar los datos del gimnasio.
+- **Gestión de Socios**: Permite agregar nuevos socios o consultar la lista de socios existentes, con funcionalidades para editar y eliminar registros.
+- **Gestión de Instructores**: Similar a la de socios, pero dedicada a los instructores del gimnasio.
+- **Gestión de Actividades**: Sección donde se pueden agregar, editar o eliminar las actividades realizadas por los socios.
+- **Buscador**: Herramienta que permite buscar tanto socios como instructores por nombre, apellido o correo electrónico.
+- **Sistema de Mensajería**: Funcionalidad que permite a los usuarios enviarse mensajes entre sí.
+- **Login de Usuario**: Los usuarios pueden registrarse, iniciar sesión y acceder a su perfil para editar y actualizar su información personal, incluyendo avatar, biografía y fecha de nacimiento.
 
 ## Características
 
-- **Agregar Socios**: Permite a los administradores añadir nuevos socios a la base de datos.
-- **Ver Lista de Socios**: Muestra todos los socios registrados en la plataforma.
-- **Agregar Instructores**: Permite agregar nuevos instructores para el gimnasio.
-- **Ver Lista de Instructores**: Permite visualizar todos los instructores registrados.
-- **Carga de Actividades**: Permite agregar nuevas actividades para los socios.
-- **Ver lista de actividades**: Permite visualizar las actividades del socio con su respectivo instructor. adicional puede editar o eliminar actividad
-- **Buscador**: Los usuarios pueden buscar socios e instructores por nombre, apellido o email.
+- **Autenticación de usuarios**: Los usuarios pueden registrarse, iniciar sesión y editar sus perfiles. La funcionalidad incluye campos como nombre, apellido, avatar, biografía y fecha de nacimiento.
+- **Gestión de Socios**: Los administradores pueden agregar, ver, editar y eliminar socios.
+- **Gestión de Instructores**: Los administradores pueden agregar, ver, editar y eliminar instructores.
+- **Gestión de Actividades**: Los socios pueden cargar nuevas actividades, y se puede editar o eliminar cualquier actividad existente.
+- **Buscador**: Permite buscar socios e instructores por nombre, apellido o correo electrónico.
+- **Mensajería entre usuarios**: Los usuarios pueden enviarse mensajes y recibir notificaciones sobre nuevos mensajes o actualizaciones.
+- **Notificaciones de éxito**: Mensajes de confirmación que indican si las acciones fueron exitosas (crear, editar, eliminar).
+- **Edición de perfil de usuario**: Los usuarios pueden acceder a su perfil y actualizar sus datos personales, incluyendo el avatar y biografía.
 
 ## Instalación
-
 1. Clona el repositorio en tu máquina local:
    ```bash
    git clone -->direccion repositorio en github.com<--
@@ -69,3 +71,5 @@ A continuación, algunas capturas de pantalla de la interfaz de la aplicación:
 
 ### Gestión de Instructores
 ![Gestion de Instructores](https://raw.githubusercontent.com/GBronzi/proyecto_1/refs/heads/master/AppCoder/static/img/pag_3.png)
+
+### Mensajeria

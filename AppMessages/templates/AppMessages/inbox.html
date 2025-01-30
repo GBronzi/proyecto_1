@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bandeja de Entrada{% endblock %}
+
+{% block cuerpo %}
+    <div class="container my-4">
+        <h2 class="mb-4">Bandeja de Entrada</h2>
+        
+        {% if messages %}
+            <div class="alert alert-success" role="alert">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <div class="list-group">
+            {% for message in received_messages %}
+                <a href="{% url 'AppMessages:message_detail' message.id %}" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ message.sender.get_full_name }}</h5>
+                        <small class="text-muted">{{ message.timestamp|date:"d M Y H:i" }}</small>
+                    </div>
+                    <p class="mb-1">{{ message.content|truncatewords:15 }}</p>
+                </a>
+            {% empty %}
+                <p class="alert alert-warning">No tienes mensajes en tu bandeja de entrada.</p>
+            {% endfor %}
+        </div>
+
+        <div class="mt-4">
+            <a href="{% url 'AppMessages:send_message' %}" class="btn btn-success">Nuevo Mensaje</a>
+        </div>
+    </div>
+
+
+{% endblock %}

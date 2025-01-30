@@ -158,6 +158,12 @@
     text-align: center;
 }
 
+.hero-section-blog {
+    background: linear-gradient(rgba(255, 255, 255, 0.252), rgba(255, 255, 255, 0.252)), url("../img/imgblog.png") no-repeat center center;
+    background-size: cover;
+    color: rgb(0, 0, 0);
+}
+
 .card-post {
     border: 1px solid black;
     border-radius: 10px;
@@ -372,4 +378,53 @@
 .avatar-label input[type="radio"]:checked + .avatar-img {
     border-color: #28a745;
     transform: scale(1.1);
+}
+
+.alert-container {
+    position: fixed; /* Fija la posición en la pantalla */
+    top: 30px; /* Espacio desde la parte superior */
+    right: 10px; /* Espacio desde la parte derecha */
+    z-index: 1050; /* Asegura que el mensaje esté por encima de otros elementos */
+    width: 300px; /* Ancho del mensaje */
+    max-width: 90%; /* Asegura que no ocupe toda la pantalla en pantallas pequeñas */
+    transition: all 0.5s ease-in-out; /* Para animaciones suaves */
+}
+
+/* Estilo del mensaje (puedes personalizarlo) */
+.alert {
+    padding: 5px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombras para el mensaje */
+}
+
+/* Estilo para los diferentes tipos de mensaje */
+.alert-success {
+    background-color: #1c1c1cb9;
+    color: white;
+}
+
+/* Animación de entrada y salida */
+@keyframes showMessage {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-container .alert {
+    animation: showMessage 0.5s ease-out;
+}
+
+.badge {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 0.2em 0.5em;
+    font-size: 0.8em;
 }

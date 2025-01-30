@@ -25,6 +25,7 @@ urlpatterns = [
     path('superadmin/', admin.site.urls),
     path('', include('AppCoder.urls')),
     path('blog/', include('AppBlog.urls')),
+    path('messages/', include('AppMessages.urls', namespace='AppMessages')),
     path('accounts/', include('AppAccounts.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ] 

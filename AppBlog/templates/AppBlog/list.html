@@ -8,12 +8,13 @@
 </title>
 
 {% block cuerpo %}
-<div class="container my-4"></div>
+<div class="hero-section-blog">
     <h3 class="mb-4 tittle-post">Bienvenido al Blog</h3>
     <div style="text-align: center;">
         <a href="{% url 'AppBlog:create' %}" class="btn btn-success me-2">Crear nuevo post</a>
-    </div></div>
-    <hr>
+        <hr>
+    </div>
+</div>
     <ul class="row row-post">
         {% for post in posts %}
             <li class="col-md-6 mb-4">

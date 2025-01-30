@@ -9,7 +9,6 @@ from django.urls import reverse_lazy
 from .models import Profile
 from django.conf import settings
 
-
 def login_view(request):
     if request.method == "POST":
         form = ProfileAuthenticationForm(request, data=request.POST)
@@ -19,17 +18,21 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+                # Mensaje de éxito
+                messages.success(request, "¡Bienvenido, has iniciado sesión con éxito!")
                 return redirect('index')  # Redirige al index después de iniciar sesión
             else:
                 messages.error(request, "Usuario o contraseña incorrectos")
         else:
-            messages.error(request, "Formulario no válido")
+            messages.error(request, "Datos no válidos")
     else:
         form = ProfileAuthenticationForm()
     return render(request, 'Accounts/login.html', {'form': form})
 
 def logout_view(request):
     logout(request)
+    # Mensaje de éxito
+    messages.success(request, "¡Has cerrado sesión correctamente!")
     return redirect('index')  # Redirige al home
 
 def index(request):
@@ -41,6 +44,8 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            # Mensaje de éxito
+            messages.success(request, "¡Te has registrado con éxito!")
             return redirect('index')  # Redirige al index después de registrarse
     else:
         form = UserRegistrationForm()
@@ -61,6 +66,8 @@ def edit_profile_view(request):
             user.last_name = form.cleaned_data['last_name']
             user.save()
             form.save()
+            # Mensaje de éxito
+            messages.success(request, "¡Perfil actualizado con éxito!")
             return redirect('AppAccounts:profile')  # Redirige al perfil después de guardar
     else:
         form = EditProfileForm(instance=request.user.profile)
@@ -73,6 +80,7 @@ def edit_profile(request):
 class CustomPasswordChangeView(PasswordChangeView):
     template_name = 'Accounts/change_password.html'  
     success_url = reverse_lazy('AppAccounts:profile')  # Redirige al perfil después de cambiar la contraseña
-    
-def index(request):
-    return render(request, 'AppCoder/index.html')
+    # Mensaje de éxito
+    def form_valid(self, form):
+        messages.success(self.request, "¡Contraseña cambiada con éxito!")
+        return super().form_valid(form)

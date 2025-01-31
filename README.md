@@ -26,7 +26,7 @@ La aplicación está compuesta por diferentes secciones que permiten una gestió
 - **Notificaciones de éxito**: Mensajes de confirmación que indican si las acciones fueron exitosas (crear, editar, eliminar).
 - **Edición de perfil de usuario**: Los usuarios pueden acceder a su perfil y actualizar sus datos personales, incluyendo el avatar y biografía.
 
-- **video del programa: https://drive.google.com/file/d/12iotsCZmXAIU_YY8tZC4HdWQerSCS0lH/view?usp=sharing
+- **video del programa: https://drive.google.com/file/d/1-SKo5dpSvgfNzB_iH6mZb0LIUhB7q35l/view?usp=sharing
 - direccion de la pagina: https://gbronzi.pythonanywhere.com/
 
 ## Instalación
